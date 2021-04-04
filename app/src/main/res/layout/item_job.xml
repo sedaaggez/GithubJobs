@@ -25,7 +25,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageViewCompanyLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="7dp"
             android:textColor="@color/black"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imageViewCompanyLogo"
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 

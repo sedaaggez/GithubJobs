@@ -6,39 +6,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sedaaggez.githubjobs.R
 import com.sedaaggez.githubjobs.adapter.JobAdapter
 import com.sedaaggez.githubjobs.viewmodel.JobViewModel
 import kotlinx.android.synthetic.main.fragment_jobs.*
-import kotlinx.android.synthetic.main.item_job.*
 
 class JobsFragment : Fragment() {
 
     private lateinit var viewModel : JobViewModel
     private val jobAdapter = JobAdapter(arrayListOf())
+    private var description: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+        viewModel = ViewModelProvider(this).get(JobViewModel::class.java)
 
-        viewModel = ViewModelProviders.of(this).get(JobViewModel::class.java)
-        viewModel.getData()
+        arguments?.let {
+            description = JobsFragmentArgs.fromBundle(it).description
+            viewModel.getData(description)
+        }
 
         recyclerViewJobs.layoutManager = LinearLayoutManager(context)
         recyclerViewJobs.adapter = jobAdapter
 
         observeLiveData()
+    }
 
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_jobs, container, false)
     }
 
-    fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.jobs.observe(viewLifecycleOwner, Observer {jobs ->
             jobs?.let {
                 recyclerViewJobs.visibility = View.VISIBLE
