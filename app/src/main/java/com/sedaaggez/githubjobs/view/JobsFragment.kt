@@ -14,7 +14,6 @@ import com.sedaaggez.githubjobs.viewmodel.JobViewModel
 import kotlinx.android.synthetic.main.fragment_jobs.*
 
 class JobsFragment : Fragment() {
-
     private lateinit var viewModel : JobViewModel
     private val jobAdapter = JobAdapter(arrayListOf())
     private var description: String = ""
@@ -75,5 +74,4 @@ class JobsFragment : Fragment() {
             }
         })
     }
-
 }

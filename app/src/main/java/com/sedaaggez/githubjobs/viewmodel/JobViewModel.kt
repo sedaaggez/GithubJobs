@@ -36,7 +36,6 @@ class JobViewModel(application: Application) : BaseViewModel(application) {
 
                 })
         )
-
     }
 
     private fun showJobs(jobList: List<Job>) {
