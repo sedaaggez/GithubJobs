@@ -7,7 +7,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class JobAPIService {
-
     private val BASE_URL = "https://jobs.github.com/"
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -19,5 +18,4 @@ class JobAPIService {
     fun getData(description: String) : Single<List<Job>> {
         return api.getDescriptionJobs(description)
     }
-
 }

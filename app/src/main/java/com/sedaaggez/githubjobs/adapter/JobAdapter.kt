@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.item_job.view.*
 class JobAdapter(val jobList: ArrayList<Job>) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     class JobViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {

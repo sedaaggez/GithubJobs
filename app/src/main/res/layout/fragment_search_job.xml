@@ -42,6 +42,7 @@
                 android:layout_marginStart="15dp"
                 android:ems="10"
                 android:hint="Search Job"
+                android:background="@android:color/transparent"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewSearch"

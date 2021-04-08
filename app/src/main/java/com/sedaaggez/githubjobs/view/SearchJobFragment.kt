@@ -15,7 +15,6 @@ class SearchJobFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         buttonSubmit.setOnClickListener(View.OnClickListener {
             if (editTextSearchJob.text.isNullOrEmpty()) {
                 Toast.makeText(context, "Please do not leave blank!", Toast.LENGTH_SHORT).show()
