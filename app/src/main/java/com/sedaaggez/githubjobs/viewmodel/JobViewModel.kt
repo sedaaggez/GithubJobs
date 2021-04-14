@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.sedaaggez.githubjobs.model.Job
 import com.sedaaggez.githubjobs.service.JobAPIService
+import com.sedaaggez.githubjobs.service.JobDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 
 class JobViewModel(application: Application) : BaseViewModel(application) {
     val jobs = MutableLiveData<List<Job>>()
@@ -25,7 +27,7 @@ class JobViewModel(application: Application) : BaseViewModel(application) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<Job>>() {
                     override fun onSuccess(t: List<Job>) {
-                        showJobs(t)
+                        storeInSQLite(t)
                     }
 
                     override fun onError(e: Throwable) {
@@ -42,6 +44,20 @@ class JobViewModel(application: Application) : BaseViewModel(application) {
         jobs.value = jobList
         jobError.value = false
         jobLoading.value = false
+    }
+
+    private fun storeInSQLite(list: List<Job>) {
+        launch {
+            val dao = JobDatabase(getApplication()).jobDao()
+            dao.deleteAllJobs()
+            val listLong = dao.insertAll(*list.toTypedArray())
+            var i = 0
+            while (i < list.size) {
+                list[i].uuid = listLong[i].toInt()
+                i += 1
+            }
+            showJobs(list)
+        }
     }
 
     override fun onCleared() {

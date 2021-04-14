@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/imageViewCompanyLogo"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,11 +37,12 @@
 
         <TextView
             android:id="@+id/textViewCompany"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
+            android:maxLines="2"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imageViewCompanyLogo"
@@ -49,11 +50,14 @@
 
         <TextView
             android:id="@+id/textViewLocation"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:textSize="10sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:gravity="right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

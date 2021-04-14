@@ -2,6 +2,7 @@ package com.sedaaggez.githubjobs.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity
@@ -39,4 +40,7 @@ data class Job(
     @ColumnInfo(name = "company_logo")
     @SerializedName("company_logo")
     val companyLogo: String?
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uuid: Int = 0
+}
