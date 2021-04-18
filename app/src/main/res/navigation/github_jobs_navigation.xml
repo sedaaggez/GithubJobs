@@ -29,5 +29,10 @@
         android:id="@+id/jobDetailFragment"
         android:name="com.sedaaggez.githubjobs.view.JobDetailFragment"
         android:label="Job Detail"
-        tools:layout="@layout/fragment_job_detail" />
+        tools:layout="@layout/fragment_job_detail" >
+        <argument
+            android:name="jobUuid"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
