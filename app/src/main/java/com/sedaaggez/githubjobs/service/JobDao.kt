@@ -14,7 +14,7 @@ interface JobDao {
     @Query("SELECT * FROM job")
     suspend fun getAllJobs(): List<Job>
 
-    @Query("SELECT * FROM job WHERE id = :jobId")
+    @Query("SELECT * FROM job WHERE uuid = :jobId")
     suspend fun getJob(jobId: Int): Job
 
     @Query("DELETE FROM job")
