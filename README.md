@@ -17,3 +17,7 @@ The application has a job listing and a job detail page.
 - LiveData
 - Room-> SQLite, Coroutine,Threading
 - Navigation
+
+# License
+
+This project is licensed under the  GNU General Public License v3.0 License - see the [LICENSE](LICENSE) file for details.
