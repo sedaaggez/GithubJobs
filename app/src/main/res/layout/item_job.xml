@@ -6,6 +6,10 @@
         <variable
             name="job"
             type="com.sedaaggez.githubjobs.model.Job"></variable>
+
+        <variable
+            name="listener"
+            type="com.sedaaggez.githubjobs.adapter.JobClickListener"></variable>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -14,7 +18,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
+        android:onClick="@{listener.onJobClicked}"
         android:layout_marginRight="5dp">
+
+        <TextView
+            android:id="@+id/jobUuidText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(job.uuid)}"
+            android:visibility="gone"></TextView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
